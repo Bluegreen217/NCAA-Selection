@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coming Soon | Countdown</title>
-  <meta name="description" content="We're launching soon. Watch the countdown and get notified." />
-  <meta property="og:title" content="Coming Soon" />
-  <meta property="og:description" content="We’re launching soon. Watch the countdown and get notified." />
+  <title>NCAA DIII Men's Soccer Championship Selection Show Starting SOON</title>
+  <meta name="description" content="Countdown to the NCAA DIII Men's Soccer Championship Selection Show." />
+  <meta property="og:title" content="NCAA DIII Men's Soccer Championship Selection Show Starting SOON" />
+  <meta property="og:description" content="Countdown to the NCAA DIII Men's Soccer Championship Selection Show." />
   <meta property="og:type" content="website" />
   <style>
     :root {
@@ -42,11 +42,9 @@
       font-size: clamp(1.6rem, 3.2vw, 2.2rem);
       line-height: 1.15;
       letter-spacing: .2px;
+      text-wrap: balance;
     }
-    header p {
-      margin: 0 0 1.25rem 0;
-      color: var(--muted);
-    }
+    header p { margin: 0 0 1.25rem 0; color: var(--muted); }
     .timer {
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -66,18 +64,8 @@
       font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       line-height: 1;
     }
-    .label {
-      color: var(--muted);
-      font-size: .9rem;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-    }
-    .cta {
-      display: flex;
-      gap: .75rem;
-      flex-wrap: wrap;
-      margin-top: .5rem;
-    }
+    .label { color: var(--muted); font-size: .9rem; letter-spacing: .4px; text-transform: uppercase; }
+    .cta { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .5rem; }
     .btn {
       appearance: none;
       border: 1px solid rgba(255,255,255,.08);
@@ -94,40 +82,17 @@
     }
     .btn:hover { border-color: rgba(255,255,255,.2); transform: translateY(-1px); }
     .btn:focus-visible { box-shadow: 0 0 0 6px var(--ring); }
-    .email {
-      flex: 1 1 260px;
-      min-width: 220px;
-      padding: .8rem .9rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
-      color: var(--text);
-      outline: none;
-      transition: box-shadow .15s ease, border-color .15s ease;
-    }
-    .email:focus-visible { box-shadow: 0 0 0 6px var(--ring); border-color: var(--accent); }
-    .status {
-      margin-top: .9rem;
-      color: var(--muted);
-      min-height: 1.2em;
-    }
+    .status { margin-top: .9rem; color: var(--muted); min-height: 1.2em; }
     footer { margin-top: 1.5rem; color: var(--muted); font-size: .9rem; }
-    @media (max-width: 520px) {
-      .timer { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    }
-    noscript {
-      display: block;
-      margin-top: .75rem;
-      color: #fca5a5;
-      font-weight: 600;
-    }
+    @media (max-width: 520px) { .timer { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    noscript { display: block; margin-top: .75rem; color: #fca5a5; font-weight: 600; }
   </style>
 </head>
 <body>
   <main role="main" aria-labelledby="title">
     <header>
-      <h1 id="title">We’re launching soon</h1>
-      <p id="tagline">Mark your calendar and join us on launch day.</p>
+      <h1 id="title">NCAA DIII Men's Soccer Championship Selection Show Starting SOON</h1>
+      <p id="tagline">Counting down to the Selection Show kickoff.</p>
     </header>
 
     <section aria-live="polite" aria-atomic="true">
@@ -141,11 +106,12 @@
       <noscript>This page needs JavaScript to show the countdown.</noscript>
     </section>
 
-    <!-- Optional “notify me” form using Formspree (free). Replace YOUR_FORM_ID below if you enable it. -->
-    <form class="cta" id="notifyForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input class="email" type="email" name="email" placeholder="you@example.com" aria-label="Email address" required />
-      <button class="btn" type="submit">Notify me</button>
-    </form>
+    <div class="cta">
+      <a class="btn" id="infoLink" target="_blank" rel="noopener noreferrer"
+         href="https://www.ncaa.com/news/soccer-men/article/2025-11-03/2025-diii-mens-soccer-championship-selection-show-info-bracket-schedule">
+        Open Selection Show Info
+      </a>
+    </div>
 
     <footer>
       <div id="when"></div>
@@ -153,23 +119,16 @@
   </main>
 
   <script>
-    // === CONFIGURE YOUR LAUNCH DATE HERE ===
-    // Use ISO 8601 with timezone to avoid surprises. Example: '2025-12-01T12:00:00-05:00'
-    const LAUNCH_AT = '2025-12-01T12:00:00-05:00'; // <-- change me
-    const TITLE = 'Gather Event Co. is coming!';
-    const TAGLINE = 'Chairs, tables, and the perfect setup for every occasion.';
+    // === COUNTDOWN TARGET ===
+    // 11:30 AM Eastern Standard Time on Monday, Nov 10, 2025
+    // EST is UTC-05:00 in November.
+    const LAUNCH_AT = '2025-11-10T11:30:00-05:00';
 
-    // Allow overriding date via URL like ?at=2025-12-31T23:59:00-05:00
+    // You can override via URL for quick tests:
+    // e.g., ?at=2025-11-10T11:45:00-05:00
     const url = new URL(window.location.href);
     const override = url.searchParams.get('at');
     const launchDate = new Date(override || LAUNCH_AT);
-
-    // Set title/tagline text
-    document.getElementById('title').textContent = TITLE;
-    document.getElementById('tagline').textContent = TAGLINE;
-
-    // Helper: pad with leading zeros
-    const pad = (n) => String(n).padStart(2, '0');
 
     const elDays = document.getElementById('days');
     const elHours = document.getElementById('hours');
@@ -180,30 +139,26 @@
     const elWhen = document.getElementById('when');
 
     function formatAsLocal(dt) {
-      // Show a friendly local-time description
-      return new Intl.DateTimeFormat(undefined, {
-        dateStyle: 'full',
-        timeStyle: 'short'
-      }).format(dt);
+      return new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' }).format(dt);
     }
 
-    // Show when we’re counting down to
-    elWhen.textContent = 'Launch time: ' + formatAsLocal(launchDate);
+    // Show the scheduled time in the viewer's local timezone
+    elWhen.textContent = 'Start time: ' + formatAsLocal(launchDate);
 
+    // Update loop
     function tick() {
-      const now = new Date();
-      const diff = launchDate - now;
-
       if (isNaN(launchDate.getTime())) {
-        elStatus.textContent = 'Invalid launch date. Check the LAUNCH_AT value.';
+        elStatus.textContent = 'Invalid date. Please check the configuration.';
         elTimer.hidden = true;
         return;
       }
 
+      const now = new Date();
+      const diff = launchDate - now;
+
       if (diff <= 0) {
-        // Reached/past launch
         elTimer.hidden = true;
-        elStatus.textContent = '🎉 We’re live!';
+        elStatus.innerHTML = '🎉 The Selection Show is LIVE!';
         return;
       }
 
@@ -216,36 +171,22 @@
       const seconds = secs % 60;
 
       elDays.textContent = days;
-      elHours.textContent = pad(hours);
-      elMins.textContent = pad(minutes);
-      elSecs.textContent = pad(seconds);
+      elHours.textContent = String(hours).padStart(2, '0');
+      elMins.textContent = String(minutes).padStart(2, '0');
+      elSecs.textContent = String(seconds).padStart(2, '0');
+
+      // Friendly status line
+      if (days > 0) {
+        elStatus.textContent = `Kicks off in ${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m`;
+      } else if (hours > 0) {
+        elStatus.textContent = `Kicks off in ${hours}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+      } else {
+        elStatus.textContent = `Kicks off in ${minutes}m ${String(seconds).padStart(2,'0')}s`;
+      }
     }
 
     tick();
-    const interval = setInterval(() => {
-      tick();
-      // Safety: stop after ~365 days to avoid runaway intervals if left open
-      // (not strictly necessary, just defensive)
-    }, 1000);
-
-    // Optional: lightweight, client-side success message for Formspree without JS redirect
-    const notifyForm = document.getElementById('notifyForm');
-    if (notifyForm && notifyForm.action.includes('formspree.io')) {
-      notifyForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = new FormData(notifyForm);
-        fetch(notifyForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }})
-          .then(res => {
-            if (res.ok) {
-              notifyForm.reset();
-              elStatus.textContent = 'Thanks! We’ll notify you.';
-            } else {
-              elStatus.textContent = 'Could not submit right now. Please try again.';
-            }
-          })
-          .catch(() => elStatus.textContent = 'Could not submit right now. Please try again.');
-      });
-    }
+    const interval = setInterval(tick, 1000);
   </script>
 </body>
 </html>
