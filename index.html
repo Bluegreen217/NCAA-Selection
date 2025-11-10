@@ -3,96 +3,169 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NCAA DIII Men's Soccer Championship Selection Show Starting SOON</title>
-  <meta name="description" content="Countdown to the NCAA DIII Men's Soccer Championship Selection Show." />
-  <meta property="og:title" content="NCAA DIII Men's Soccer Championship Selection Show Starting SOON" />
-  <meta property="og:description" content="Countdown to the NCAA DIII Men's Soccer Championship Selection Show." />
+  <title>NCAA DIII Men's Soccer Championship Selection Show — University of Lynchburg</title>
+  <meta name="description" content="Countdown for the University of Lynchburg Men's Soccer: NCAA DIII Championship Selection Show." />
+  <meta property="og:title" content="U of Lynchburg Men's Soccer — Selection Show Countdown" />
+  <meta property="og:description" content="Counting down to the NCAA DIII Men's Soccer Championship Selection Show." />
   <meta property="og:type" content="website" />
+
   <style>
-    :root {
-      --bg: #0b0e14;
-      --card: #121725;
-      --accent: #7dd3fc;
-      --muted: #9aa4b2;
-      --text: #e5e7eb;
-      --ring: rgba(125, 211, 252, 0.35);
+    /* ===== THEME (University of Lynchburg inspired) ===== */
+    :root{
+      --lynchburg-red:#C8102E; /* primary */
+      --lynchburg-black:#0B0B0B;
+      --pitch-dark:#101215;
+      --pitch-lines:#1a1d22;
+      --text:#F3F4F6;
+      --muted:#A7B0BD;
+      --ring:rgba(200,16,46,.28);
+      --card:#141722;
+      --card-border:rgba(255,255,255,.06);
+      --unit-bg:rgba(255,255,255,.04);
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 70% -10%, rgba(125,211,252,.15), transparent 60%) var(--bg);
-      display: grid;
-      place-items: center;
-      padding: 2rem;
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      color:var(--text);
+      background:
+        /* subtle pitch lines */
+        linear-gradient(0deg, transparent 24%, var(--pitch-lines) 25%, var(--pitch-lines) 26%, transparent 27%, transparent 74%, var(--pitch-lines) 75%, var(--pitch-lines) 76%, transparent 77%),
+        linear-gradient(90deg, transparent 24%, var(--pitch-lines) 25%, var(--pitch-lines) 26%, transparent 27%, transparent 74%, var(--pitch-lines) 75%, var(--pitch-lines) 76%, transparent 77%),
+        radial-gradient(900px 600px at 80% -10%, rgba(200,16,46,.18), transparent 60%),
+        var(--pitch-dark);
+      background-size: 40px 40px, 40px 40px, auto, auto;
+      display:grid;
+      place-items:center;
+      padding:24px;
     }
-    main {
-      width: 100%;
-      max-width: 760px;
+
+    main{
+      width:100%;
+      max-width:860px;
       background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)) var(--card);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      border:1px solid var(--card-border);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 24px 80px rgba(0,0,0,.45);
+      position:relative;
+      overflow:hidden;
     }
-    header h1 {
-      margin: 0 0 .25rem 0;
-      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-      line-height: 1.15;
-      letter-spacing: .2px;
-      text-wrap: balance;
+
+    /* red accent bar */
+    main::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:6px;
+      background:linear-gradient(90deg, var(--lynchburg-red), #ff3551 50%, var(--lynchburg-red));
+      opacity:.95;
     }
-    header p { margin: 0 0 1.25rem 0; color: var(--muted); }
-    .timer {
-      display: grid;
+
+    header{
+      display:flex;
+      flex-direction:column;
+      gap:.4rem;
+      margin-top:.25rem;
+    }
+
+    .team-pill{
+      align-self:flex-start;
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.35rem .65rem;
+      border-radius:999px;
+      border:1px solid var(--card-border);
+      background:rgba(200,16,46,.08);
+      font-weight:700;
+      font-size:.9rem;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+    }
+    .team-dot{
+      width:.6rem; height:.6rem; border-radius:999px; background:var(--lynchburg-red);
+      box-shadow:0 0 0 4px rgba(200,16,46,.18);
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+      line-height:1.15;
+      text-wrap:balance;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .timer{
+      display:grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: .75rem;
-      margin: 1.25rem 0 1.5rem;
+      gap:.8rem;
+      margin:1.25rem 0 1.25rem;
     }
-    .unit {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 16px;
-      padding: 1rem;
-      text-align: center;
+    .unit{
+      background:var(--unit-bg);
+      border:1px solid var(--card-border);
+      border-radius:16px;
+      padding:1rem;
+      text-align:center;
     }
-    .value {
-      display: block;
-      font-weight: 700;
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      line-height: 1;
+    .value{
+      display:block;
+      font-weight:800;
+      font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+      line-height:1;
     }
-    .label { color: var(--muted); font-size: .9rem; letter-spacing: .4px; text-transform: uppercase; }
-    .cta { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .5rem; }
-    .btn {
-      appearance: none;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(125,211,252,.08);
-      padding: .8rem 1rem;
-      border-radius: 12px;
-      color: var(--text);
-      cursor: pointer;
-      font-weight: 600;
-      text-decoration: none;
-      outline: none;
+    .label{
+      color:var(--muted);
+      font-size:.85rem;
+      letter-spacing:.35px;
+      text-transform:uppercase;
+    }
+
+    .status{ margin-top:.6rem; color:var(--muted); min-height:1.2em; }
+
+    .cta{
+      display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem;
+    }
+    .btn{
+      appearance:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(180deg, rgba(200,16,46,.16), rgba(200,16,46,.10));
+      padding:.85rem 1rem;
+      border-radius:12px;
+      color:var(--text);
+      cursor:pointer; font-weight:700; text-decoration:none; outline:0;
       transition: transform .06s ease, box-shadow .15s ease, border-color .15s ease;
-      box-shadow: 0 0 0 0 var(--ring);
+      box-shadow:0 0 0 0 var(--ring);
     }
-    .btn:hover { border-color: rgba(255,255,255,.2); transform: translateY(-1px); }
-    .btn:focus-visible { box-shadow: 0 0 0 6px var(--ring); }
-    .status { margin-top: .9rem; color: var(--muted); min-height: 1.2em; }
-    footer { margin-top: 1.5rem; color: var(--muted); font-size: .9rem; }
-    @media (max-width: 520px) { .timer { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    noscript { display: block; margin-top: .75rem; color: #fca5a5; font-weight: 600; }
+    .btn:hover{ border-color:rgba(255,255,255,.22); transform:translateY(-1px); }
+    .btn:focus-visible{ box-shadow:0 0 0 8px var(--ring); }
+    .btn--primary{
+      background:linear-gradient(180deg, var(--lynchburg-red), #b50f28);
+      border-color:#ff7a8d22;
+    }
+
+    footer{ margin-top:1.2rem; color:var(--muted); font-size:.95rem; }
+
+    @media (max-width:560px){
+      .timer{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    noscript{ display:block; margin-top:.75rem; color:#fca5a5; font-weight:700; }
   </style>
 </head>
 <body>
   <main role="main" aria-labelledby="title">
     <header>
+      <div class="team-pill"><span class="team-dot" aria-hidden="true"></span> Univ. of Lynchburg • Men’s Soccer</div>
       <h1 id="title">NCAA DIII Men's Soccer Championship Selection Show Starting SOON</h1>
-      <p id="tagline">Counting down to the Selection Show kickoff.</p>
+      <p class="sub">Counting down to the Selection Show kickoff. ⚽</p>
     </header>
 
     <section aria-live="polite" aria-atomic="true">
@@ -107,7 +180,7 @@
     </section>
 
     <div class="cta">
-      <a class="btn" id="infoLink" target="_blank" rel="noopener noreferrer"
+      <a class="btn btn--primary" target="_blank" rel="noopener noreferrer"
          href="https://www.ncaa.com/news/soccer-men/article/2025-11-03/2025-diii-mens-soccer-championship-selection-show-info-bracket-schedule">
         Open Selection Show Info
       </a>
@@ -124,8 +197,7 @@
     // EST is UTC-05:00 in November.
     const LAUNCH_AT = '2025-11-10T11:30:00-05:00';
 
-    // You can override via URL for quick tests:
-    // e.g., ?at=2025-11-10T11:45:00-05:00
+    // Optional override for quick tests: ?at=YYYY-MM-DDTHH:MM:SS-05:00
     const url = new URL(window.location.href);
     const override = url.searchParams.get('at');
     const launchDate = new Date(override || LAUNCH_AT);
@@ -138,25 +210,23 @@
     const elStatus = document.getElementById('status');
     const elWhen = document.getElementById('when');
 
-    function formatAsLocal(dt) {
-      return new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' }).format(dt);
+    function formatAsLocal(dt){
+      return new Intl.DateTimeFormat(undefined,{dateStyle:'full',timeStyle:'short'}).format(dt);
     }
 
-    // Show the scheduled time in the viewer's local timezone
+    // Show scheduled time in viewer's local timezone
     elWhen.textContent = 'Start time: ' + formatAsLocal(launchDate);
 
-    // Update loop
-    function tick() {
-      if (isNaN(launchDate.getTime())) {
+    function tick(){
+      if (isNaN(launchDate.getTime())){
         elStatus.textContent = 'Invalid date. Please check the configuration.';
-        elTimer.hidden = true;
-        return;
+        elTimer.hidden = true; return;
       }
 
       const now = new Date();
       const diff = launchDate - now;
 
-      if (diff <= 0) {
+      if (diff <= 0){
         elTimer.hidden = true;
         elStatus.innerHTML = '🎉 The Selection Show is LIVE!';
         return;
@@ -164,21 +234,21 @@
 
       elTimer.hidden = false;
 
-      const secs = Math.floor(diff / 1000);
-      const days = Math.floor(secs / 86400);
-      const hours = Math.floor((secs % 86400) / 3600);
-      const minutes = Math.floor((secs % 3600) / 60);
-      const seconds = secs % 60;
+      const secs = Math.floor(diff/1000);
+      const days = Math.floor(secs/86400);
+      const hours = Math.floor((secs%86400)/3600);
+      const minutes = Math.floor((secs%3600)/60);
+      const seconds = secs%60;
 
       elDays.textContent = days;
-      elHours.textContent = String(hours).padStart(2, '0');
-      elMins.textContent = String(minutes).padStart(2, '0');
-      elSecs.textContent = String(seconds).padStart(2, '0');
+      elHours.textContent = String(hours).padStart(2,'0');
+      elMins.textContent = String(minutes).padStart(2,'0');
+      elSecs.textContent = String(seconds).padStart(2,'0');
 
-      // Friendly status line
-      if (days > 0) {
+      // Status line
+      if (days>0){
         elStatus.textContent = `Kicks off in ${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m`;
-      } else if (hours > 0) {
+      } else if (hours>0){
         elStatus.textContent = `Kicks off in ${hours}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
       } else {
         elStatus.textContent = `Kicks off in ${minutes}m ${String(seconds).padStart(2,'0')}s`;
